@@ -25,14 +25,14 @@
   
   
   // 3번 풀이
-  
-  let num1 = 1200;
-  let num2 = 1300;
-  let num3 = 1000;
-  let avgSales = num1 + num2 + num3 ;
-  // const fourth = prompt("4분기 판매량은?", "0");
 
-  document.write(avgSales);
+  const avgSales = (1200 + 1300 + 1000) / 3;
+  const fourth = prompt("4분기 판매량은?", "0");
+  const msg1 = '판매량이 평균 이상입니다.';
+  const msg3 = '판매량이 평균 미달입니다.';
+
+  const result = avgSales ? msgl : msg3;
+  document.write(result);
 
 
 </script>
