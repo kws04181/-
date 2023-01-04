@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,14 @@
     * {
       margin: 0;
     }
-    .red{color: red;}
-    .blue{color: blue;}
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
   </style>
   <script>
     // 반복문 //
@@ -63,95 +70,97 @@
     //   실행코드
     // } while (조건식) 
 
-  //   i = 5;
-  //   do {
-  //     document.write('hello~<br>');
-  //   } while (i < 3);
-  // document.write('<br><hr><br>');
+    //   i = 5;
+    //   do {
+    //     document.write('hello~<br>');
+    //   } while (i < 3);
+    // document.write('<br><hr><br>');
 
-  // for문 //
+    // for문 //
 
-  // for (초기화식; 조건식; 증감식) {
-  //   실행코드
-  // }
+    // for (초기화식; 조건식; 증감식) {
+    //   실행코드
+    // }
 
-  // for (let i = 1; i <= 10; i++) {
-  //   document.write(i,'<br>');
-  // }
-  // document.write('<br><hr><br>');
+    // for (let i = 1; i <= 10; i++) {
+    //   document.write(i,'<br>');
+    // }
+    // document.write('<br><hr><br>');
 
-  // 1~100까지의 합
-  // let sum = 0;
-  // for (let i = 1; i <= 100; i++) {
-  //   sum = sum + i;
-  // }
-  // document.write('1~100까지의 합은 > ',sum,'<br>');
-  // document.write('<br><hr><br>');
+    // 1~100까지의 합
+    // let sum = 0;
+    // for (let i = 1; i <= 100; i++) {
+    //   sum = sum + i;
+    // }
+    // document.write('1~100까지의 합은 > ',sum,'<br>');
+    // document.write('<br><hr><br>');
 
-  // breadk문 //
-  // switch문 또는 반복문을 빠져나갈때 사용
+    // breadk문 //
+    // switch문 또는 반복문을 빠져나갈때 사용
 
-  // 1~10까지 반복중 i의 값이 6일때 강제종료
-  for (let i = 1; i <= 10; i++) {
-    if (i === 7) {
-      break;
+    // 1~10까지 반복중 i의 값이 6일때 강제종료
+    for (let i = 1; i <= 10; i++) {
+      if (i === 7) {
+        break;
+      }
+      document.write(i, '<br>');
     }
-    document.write(i ,'<br>');
-  }
-  document.write('<br><hr><br>');
+    document.write('<br><hr><br>');
 
 
-  // for (let i = 1; i <= 10; i++) {
-  //   if (i === 7)        break; // 한줄에도 break문 사용가능
-  //   document.write(i ,'<br>');
-  // }
+    // for (let i = 1; i <= 10; i++) {
+    //   if (i === 7)        break; // 한줄에도 break문 사용가능
+    //   document.write(i ,'<br>');
+    // }
 
-  // continue문 //
-  // 반복문에서만 사용 가능
-  // 뒤에 오는 코드는 무시하고 다음 반복을 계속할때 사용
+    // continue문 //
+    // 반복문에서만 사용 가능
+    // 뒤에 오는 코드는 무시하고 다음 반복을 계속할때 사용
 
-  // 1~10까지 홀수만 출력(2의 배수(짝수) 출력 건너뛰기)
-  for (let i = 1; i <= 10; i++) {
-    if (i % 2 === 0) {
-      continue;
+    // 1~10까지 홀수만 출력(2의 배수(짝수) 출력 건너뛰기)
+    for (let i = 1; i <= 10; i++) {
+      if (i % 2 === 0) {
+        continue;
+      }
+      document.write(i, '<br>');
     }
-    document.write(i,'<br>');
-  }
-  document.write('<br><hr><br>');
+    document.write('<br><hr><br>');
 
-  // 중첩 for문 //
-  // for문 안에 for문 사용
-  // for (초기화식; 조건식; 증감식) { // 바깥 for문
-  //   for (초기화식; 조건식; 증감식) { // 안쪽 for문
-  //     실행코드
-  //   }
-  // }
+    // 중첩 for문 //
+    // for문 안에 for문 사용
+    // for (초기화식; 조건식; 증감식) { // 바깥 for문
+    //   for (초기화식; 조건식; 증감식) { // 안쪽 for문
+    //     실행코드
+    //   }
+    // }
 
-  // 1행 1열 ~ 3행 3열까지 모두 출력
-  for (let i = 1; i <= 3; i++) {
-    for (let j = 1; j <= 2; j++) {
-      document.write(i + '행' + j + '열');
+    // 1행 1열 ~ 3행 3열까지 모두 출력
+    for (let i = 1; i <= 3; i++) {
+      for (let j = 1; j <= 2; j++) {
+        document.write(i + '행' + j + '열');
+      }
+      document.write('<br>');
     }
-    document.write('<br>');
-  }
-  document.write('<br><hr><br>');
+    document.write('<br><hr><br>');
 
 
-  // 구구단 출력
-  for (let i = 2; i <= 9; i++) {
-    document.write('****' + i +'단 ****','<br>');
-    for (let j = 1; j <= 9; j++) {
-      document.write(i + 'x' + j + '=' + (i * j),'<br>');
+    // 구구단 출력
+    for (let i = 2; i <= 9; i++) {
+      document.write('****' + i + '단 ****', '<br>');
+      for (let j = 1; j <= 9; j++) {
+        document.write(i + 'x' + j + '=' + (i * j), '<br>');
+      }
+      document.write('<br>');
     }
-    document.write('<br>');
-  }
-  document.write('<br><hr><br>');
+    document.write('<br><hr><br>');
 
 
 
   </script>
 </head>
+
 <body>
-  
+
 </body>
+
 </html>
