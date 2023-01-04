@@ -14,26 +14,45 @@
     const subject = prompt('과목 입력', '');
     let code;
 
-    switch (subject) {
-      case '수학':
-      document.write( code = '01');
+  //   switch (subject) {
+  //     case '수학':
+  //     document.write( code = '01');
+  //     break;
+  //     case '영어':
+  //     document.write( code = '02');
+  //     break;
+  //     case '국어':
+  //     document.write( code = '03');
+  //     break;
+  //     case '국사':
+  //     document.write( code = '04');
+  //     break;
+  //     case '기타':
+  //     document.write( code = '00');
+  //     break;
+  //     default:
+  //     alert('해당안됨')
+  //     break;
+  // }
+
+  switch (subject) {
+    case '수학':
+      code = '01';
       break;
-      case '영어':
-      document.write( code = '02');
+    case '영어':
+      code = '02';
       break;
-      case '국어':
-      document.write( code = '03');
+    case '국어':
+      code = '03';
       break;
-      case '국사':
-      document.write( code = '04');
+    case '국사':
+      code = '04';
       break;
-      case '기타':
-      document.write( code = '00');
-      break;
-      default:
-      alert('해당안됨')
+    default:
+      code = '00';
       break;
   }
+  document.write('과목코드:' + code);
 
   </script>
 </head>

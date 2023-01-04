@@ -17,25 +17,20 @@
     const grade = Number(prompt('학년?', '1'));
     const score = Number(prompt('점수?', '0'));
 
-    if (1 <= grade && grade <= 3 ) {
-      if (60 <= score && score <= 100) {
-        document.write('합격입니다.');
-      }
-      else {
-        document.write('불합격');
+    let msg = '에러입니다.';
+
+    if (score < 0 || score > 100) {
+      alert(msg);
+
+    } else { // 점수가 0이상 100이하(정상입력시)
+      if ((grade >= 1 && grade <=3 && score >= 60) ||
+          (grade >= 4 && grade <=6 && score >= 70)) {
+        msg = '합격입니다.';
+      } else {
+        msg = '불합격입니다.';
       }
     }
-
-    if (4 <= grade && grade <= 6 ) {
-      if (70 <= score && score <= 100) {
-        document.write('합격입니다.');
-      }
-      else {
-        document.write('불합격');
-      }
-    }
-
-
+    document.write(msg);
 
   </script>
 </head>
