@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,12 +13,36 @@
     // 로또 번호가 6개가 완성되면 오름차순으로 정렬까지 해서 출력해보세요.
 
     const lottoArr = []; // 빈 배열
-    
+
     // 풀이7
-    
+    while (lottoArr.length < 6) {
+      const randomNum = Math.floor(Math.random() * 45) + 1;
+      if (!lottoArr.includes(randomNum)) {
+        lottoArr.push(randomNum);
+      }
+    }
+    console.log(lottoArr.sort(function (a, b) { return a - b; }));
+
+    // 풀이7-1
+    let lotto = [];
+    while (lotto.length < 6) {
+      let number = parseInt(Math.random() * 45) + 1;
+      if (lotto.indexOf(number) < 0) {
+        lotto.push(number);
+      }
+    }
+    console.log(lotto.sort(function (a, b) {
+      return a - b;
+    }));
+
+
+
+
   </script>
 </head>
+
 <body>
-  
+
 </body>
+
 </html>

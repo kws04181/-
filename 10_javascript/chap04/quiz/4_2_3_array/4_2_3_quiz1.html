@@ -18,12 +18,19 @@
     // console.log(originArr); 
 
     // 풀이1
-    // resultArr = originArr.slice(1,3);
-    // console.log(resultArr);
+    CopyArr1 = originArr.slice(0,4);
+    CopyArr2 = originArr.slice(0);
+    CopyArr3 = originArr.slice(); // 기본 0
+    CopyArr4 = originArr.concat();
 
-    resultArr = originArr.concat();
-    console.log(resultArr);
-
+    console.log(CopyArr1);
+    console.log(CopyArr2);
+    console.log(CopyArr3);
+    console.log(CopyArr4);
+    
+    // 참고 - ES6차 spread 연산자
+    const CopyArr5 = [...originArr];
+    console.log(CopyArr5);
 
   </script>
 </head>
