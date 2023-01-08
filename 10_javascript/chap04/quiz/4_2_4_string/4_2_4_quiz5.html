@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <input type="file">
   <br>
@@ -19,6 +21,7 @@
     // 샘플 코드
     const imgFileExt = ['jpg', 'png', 'gif'];
     const fileInput = document.querySelector('input[type=file]');
+    
     fileInput.addEventListener('change', function () {
       // debugger;
       console.log(fileInput);
@@ -27,7 +30,7 @@
     });
 
     // 풀이5
-    
+
     let fileExt = imgFileExt;
     console.log(fileExt);
 
@@ -36,10 +39,38 @@
     let check3 = false;
 
     if (fileExt.indexOf(imgFileExt)) {
-      
+
     }
+
+
+    // 풀이5
+    // const imgFileExt = ['jpg', 'png', 'gif'];
+    // let fileExt;
+    // const fileInput = document.querySelector('input[type=file]');
+
+    // fileInput.addEventListener('change', function () {
+    //   // debugger;
+    //   // console.log(fileInput);
+    //   // console.log(fileInput.files);
+    //   // console.log(fileInput.files[0]);
+
+    //   const fileName = fileInput.files[0].name;
+    //   fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+    //   console.log(fileExt);
+
+    //   if (fileExt !== 'jpg' &&
+    //     fileExt !== 'png' &&
+    //     fileExt !== 'gif') {
+    //     alert('이미지 파일이 아닙니다!');
+    //   }
+
+    //   // if (!imgFileExt.includes(fileExt)) {
+    //   //   alert('이미지 파일이 아닙니다!');
+    //   // }
+    // });
 
 
   </script>
 </body>
+
 </html>

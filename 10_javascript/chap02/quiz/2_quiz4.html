@@ -25,7 +25,7 @@
   const nomalWeight = (height - 100) * 0.9;
   let result = (weight >= nomalWeight -5) && (weight <= nomalWeight + 5);
   result = result ? '적정체중' : (name)+'적정 체중X';
-  document.write('평균 체중은' + nomalWeight, '<br>');
+  document.write('평균 체중은' + Math.floor(nomalWeight), '<br>');
   document.write(name + '님은' + result);
 
 </script>
