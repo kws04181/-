@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <input type="file">
+  <input type="file" multiple>
   <br>
 
   <script>
@@ -18,56 +18,34 @@
     // 이미지 파일(jpg, png, gif)이 맞는지 검사하여
     // 아닐 경우에만 alert() 창을 띄워 경고하기.
 
-    // 샘플 코드
+    // 풀이5
     const imgFileExt = ['jpg', 'png', 'gif'];
+    let fileExt;
     const fileInput = document.querySelector('input[type=file]');
-    
+
     fileInput.addEventListener('change', function () {
       // debugger;
-      console.log(fileInput);
-      console.log(fileInput.files);
-      console.log(fileInput.files[0]);
+      console.log(fileInput); // input DOM
+      // console.log(fileInput.files); // FileList 객체
+      console.log(fileInput.files[0]); // File 객체
+
+      const fileName = fileInput.files[0].name;
+      fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      console.log(fileExt);
+
+      // if (fileExt !== 'jpg' &&
+      //   fileExt !== 'png' &&
+      //   fileExt !== 'gif') {
+      //   alert('이미지 파일이 아닙니다!');
+      // }
+
+      if (!imgFileExt.includes(fileExt)) {
+        alert('이미지 파일이 아닙니다!');
+      }
     });
 
-    // 풀이5
-
-    let fileExt = imgFileExt;
-    console.log(fileExt);
-
-    let check1 = false;
-    let check2 = false;
-    let check3 = false;
-
-    if (fileExt.indexOf(imgFileExt)) {
-
-    }
 
 
-    // 풀이5
-    // const imgFileExt = ['jpg', 'png', 'gif'];
-    // let fileExt;
-    // const fileInput = document.querySelector('input[type=file]');
-
-    // fileInput.addEventListener('change', function () {
-    //   // debugger;
-    //   // console.log(fileInput);
-    //   // console.log(fileInput.files);
-    //   // console.log(fileInput.files[0]);
-
-    //   const fileName = fileInput.files[0].name;
-    //   fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
-    //   console.log(fileExt);
-
-    //   if (fileExt !== 'jpg' &&
-    //     fileExt !== 'png' &&
-    //     fileExt !== 'gif') {
-    //     alert('이미지 파일이 아닙니다!');
-    //   }
-
-    //   // if (!imgFileExt.includes(fileExt)) {
-    //   //   alert('이미지 파일이 아닙니다!');
-    //   // }
-    // });
 
 
   </script>
