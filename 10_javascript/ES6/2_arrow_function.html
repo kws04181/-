@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .opening {
+      background: coral;
+    }
+  </style>
   <script>
     // 화살표 함수
     // 화살표(=>)를 사용해서 함수를 선언하는 방법
@@ -66,24 +71,119 @@
     const add = (num1, num2) => num1 + num2;
 
     // Quiz2
-    const ask = (question, yes, no) => {
-      if (confirm(question)) yes();
-      else no();
-    };
+    // const ask = (question, yes, no) => {
+    //   if (confirm(question)) yes();
+    //   else no();
+    // };
 
-    ask('동의하십니까?',
-      () => alert('동의하셨습니다.'),
-      () => alert('취소 버튼을 누르셨습니다.')
-    );
+    // ask('동의하십니까?',
+    //   () => alert('동의하셨습니다.'),
+    //   () => alert('취소 버튼을 누르셨습니다.')
+    // );
 
     // Quiz3
-    const addMember = name => {return { name,no: 0};}
+    const addMember = name => { return { name, no: 0 }; }
     const member = addMember('김성웡')
     console.log(member);
+
+    // 화살표 함수와 this 키워드
+    // 화살표 함수 내부에서 this 키워드는
+    // - 일반 함수와 다르게동작하므로 주의
+    // - 상위 스코프에서 상속됨
+
+    // 아래 * 와 같은 경우에 유용하게 사용
+
+    console.log(this); // 전역 스코프에서 this는 Windows 객체를  가리킴
+
+    // 화살표 함수를 피해야 하는 경우
+    // 아래 ** 같은경우에 주의해서 사용
+
+    // arguments 객체에 대한 접근 방식
+    function example() {
+      console.log(arguments[0]);
+    }
+    example(1, 2, 3);
+
+    // const showWinner = () => {
+    //   const winner = arguments[0]; // arguments 객체 사용 X
+    //   console.log(`${winner} was the winner`);
+    // };
+    // showWinner('kim', 'seong', 'won');
+
+    //  화살표 함수에 전달된 모든 인수에 접근방법
+    // Rest Parameter(...) 사용
+    const showWinner = (...args) => {
+      const winner = args[0];
+      console.log(`${winner} was the winner`);
+    };
+    showWinner('kim', 'seong', 'won');
+
   </script>
 </head>
 
 <body>
+  <!-- * -->
+  <div class="box open">
+    This is a box
+  </div>
+
+  <!-- ** -->
+  <button type="button" class="btn">CLICK</button>
+
+  <script>
+    // * //
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function () {
+      this.classList.toggle('opening');
+
+      // 문제 발생
+      // setTimeout(function () {
+      //   console.log(this); // Windows 객체
+      //   this.classList.toggle('opening');
+      // }, 500);
+
+      // 문제 해결 방법(화살표 함수)
+      setTimeout(() => {
+        console.log(this); // box 객체, 상위 스코프에서 상속됨
+        this.classList.toggle('opening');
+      }, 500);
+    });
+
+    // ** //
+    const button = document.querySelector('.btn');
+    button.addEventListener('click', () => {
+      this.classList.toggle('on'); // 오류: 여기서 this는 상위 스코프인 windows 객체를 가르킴
+    });
+
+    const person1 = {
+      age: 26,
+      grow: function () {
+        this.age++;
+        console.log(this.age);
+      }
+    };
+    person1.grow();
+
+    const person2 = {
+      age: 26,
+      grow: () => {
+        this.age++; // undefined++;
+        console.log(this.age); // NaN
+      }
+    };
+    person2.grow();
+
+    let x = 100;
+    if (x > 50) {
+      let x = 10;
+    }
+    console.log(x);
+
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.3.slim.js"
+    integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous">
+    </script>
 
 </body>
 

@@ -15,13 +15,25 @@
 
 
     // 풀이3
+    // 한글로 풀이(플로우 차트를 글로 적기)
+    // 1) 함수 printNumbers(from, to) 선언
+    // 2) 1초 간격으로(setInterval(f, 1000)) from값을 출력시키기
+    // 3) from값을 1씩 증가(++,+1)
+    // 4) to값까지만(조건: from === to, from >= to) 출력하고 멈추기(clearInterval)
+
     // setInerval,clearInterval
 
-    const printNumbers = (from, to) => {
-    setInterval
+    function printNumbers(from, to) {
+      const timerId = setInterval(function () {
+        console.log(from);
+        if (from === to) {
+          clearInterval(timerId);
+        }
+        from++
+      },50);
     }
 
-    const count = printNumbers(5, 10);
+    printNumbers(5, 10);
 
   </script>
 </head>
