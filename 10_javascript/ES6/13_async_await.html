@@ -151,7 +151,7 @@
     // 답:3
 
     // async/await로 리팩터링 하기
-    
+
     const loginUser = (id, password) => {
       return new Promise((resolve, reject) => {
         // 네트워크 통신을 하는것처럼(setTimeout) 사용
@@ -182,34 +182,17 @@
     const id = prompt('아이디를 입력하시오');
     const password = prompt('비밀번호 입력하시오');
 
-    loginUser(id, password)
-      .then(userId => { // 로그인이 성공하면 그러면
-        return getRoles(userId); // userID 값을 통해 권한 정보를 얻는 getRoles() 호출
-      })
-      .then(userInfo => { // 권한 정보를 얻어오면 그러면 alert창 띄움
+    // 1. 가장 먼저 해야될 것: async 함수 만들기
+    const loginAndGetRoles = async () => {
+      try {
+        const userId = await loginUser(id, password)
+        const userInfo = await getRoles(userId);
         alert(`Welcome ${userInfo.name} (${userInfo.role})`);
-      })
-      .catch(err => { // 에러 핸들링
-        console.error(arr);
-      });
-
-    // 예제1) 리팩터링
-    // async function go() {
-    //   // 프로미스가 완료될 때까지 기다리기 위해 await 키워드를 사용
-    //   // await를 쓰면 우리가 평상시 코딩하는 것처럼 동기적 코드로 보임(가독성 굳)
-    //   const res = await walk(500); // 0.5 기다림
-    //   console.log(res);
-    //   const res2 = await walk(900); // 0.9 기다림
-    //   console.log(res2);
-    //   const res3 = await walk(600); // 0.6 기다림
-    //   console.log(res3);
-    //   const res4 = await walk(700); // 0.7 기다림
-    //   console.log(res4);
-    //   const res5 = await walk(400);
-    //   console.log(res5);
-    // }
-    // go();
-    // await는 비동기 함수 내에서만 사용이 가능하다.
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    loginAndGetRoles();
 
   </script>
 </head>
