@@ -3,9 +3,9 @@ import Book from "./Book";
 function Library(props) {
   return (
     <div>
-      <Book name="네모 아저씨 종이접기" numOfPage={300}/>
-      <Book name="한복 바지 종이 접기(전통적인 방법)" numOfPage={400}/>
-      <Book name="종이 접기 한복 치마(전통적인 방법)" numOfPage={500}/>
+      <Book name="모던 자바스크립트 딥 다이브" numOfPage={300} />
+      <Book name="처음 만난 리액트" numOfPage={400} />
+      <Book name="리액트를 다루는 기술" numOfPage={500} />
     </div>
   );
 }
