@@ -6,20 +6,21 @@ import Profile from "./Profile";
 function PropUse(props) {
   return (
     <>
-      <Profile
+      <Profile 
         // 키-값 쌍의 형태로 컴포넌트에 props를 전달할 수 있음
-        // 정수, 변수, 다른 컴포넌트 값을 넣을 때는 {}로 감싼다.
-        // 문자열을 {} 생략 가능
-        name="KIM"
-        introduction="안녕하세요. KIM입니다."
-        viewCount={1997}
+        // 정수, 변수, 다른 컴포넌트 등 값을 넣을 때는 {}로 감싼다.
+        // 문자열은 {} 생략 가능
+        name="고니"
+        introduction="안녕하세요. 고니입니다."
+        viewCount={1500}
       />
-      <Layout
+
+      <Layout 
         // props로 다른 컴포넌트를 넘기는 것도 가능
-        width={5752}
-        height={3539}
+        width={2560}
+        height={1440}
         header={
-          <Header title="성성원의 블록입니다." />
+          <Header title="고니의 블로그입니다." />
         }
         footer={
           <Footer />
