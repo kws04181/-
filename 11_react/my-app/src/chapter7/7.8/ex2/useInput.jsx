@@ -7,7 +7,17 @@ function useInput(initialvalue) {
     setinputValue(e.target.value);
   }
 
-  return [inputValue, handleChange];
+  // const handleSubmit = () => {
+  //   alert(inputValue);
+  //   setInputValue('');
+  // };
+
+  const reset = () => {
+    setinputValue('');
+  }
+
+  // return [inputValue, handleChange, handleSubmit];
+  return [inputValue, handleChange, reset];
 
 }
 
