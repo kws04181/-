@@ -27,6 +27,10 @@ import ConfirmButton from './chapter8/ConfirmButton';
 import MyButton from './chapter8/8.2/MyButton';
 import Greeting from './chapter9/9.1/Greeting';
 import LoginControl from './chapter9/9.2/LoginControl';
+import Mailbox from './chapter9/9.3/Mailbox';
+import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
+import MainPage from './chapter9/9.4/MainPage';
+import LandingPage from './chapter9/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -75,12 +79,24 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // );
 
 // 8장 예제
+// root.render(
+//   // <Toggle />
+//   // <MyButton />
+//   // <ConfirmButton />
+//   // <Greeting isLoggedIn={0} />
+//   <LoginControl />
+// );
+
+// 9장 예제
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+// const messages = [];
 root.render(
-  // <Toggle />
-  // <MyButton />
-  // <ConfirmButton />
-  // <Greeting isLoggedIn={0} />
-  <LoginControl />
+  // <Greeting isLoggedIn={true} />
+  // <LoginControl />
+  // <Mailbox unreadMessages={messages} />
+  <LoginControlRefactoring />
+  // <MainPage />
+  // <LandingPage />
 );
 
 // If you want to start measuring performance in your app, pass a function
