@@ -6,6 +6,10 @@
   padding: 0 20px; 
 }
 
+.header--dark ul {
+  list-style: none;
+}
+
 .inner {
   padding: 0 20px;
 }
@@ -20,4 +24,11 @@
 
 .list:hover {
   background: #eaeaea;
+}
+
+.detail { 
+  margin-top: 20px;
+  padding: 10px 20px 30px;
+  background: #f9f9f9;
+  border-radius: 6px;
 }
