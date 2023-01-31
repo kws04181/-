@@ -40,6 +40,7 @@ import FileInput from './chapter11/11.3/FileInput';
 import Reservation from './chapter11/11.4/Reservation';
 import ReservationRefactoring from './chapter11/11.4/ReservationRefactoring';
 import SignUp from './chapter11/SignUp';
+import Calculator from './chapter12/Calculator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -116,15 +117,21 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // );
 
 // 11장 예제
-root.render(
+// root.render(
   // <NameForm />
   // <EssayForm />
   // <FlavorForm />
   // <FileInput />
   // <Reservation />
   // <ReservationRefactoring />
-  <SignUp />
+  // <SignUp />
+// );
+
+// 12장 예제
+root.render(
+  <Calculator />
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
