@@ -46,6 +46,10 @@ import WelcomeDialog from './chapter13/13.1.1.1/WelcomeDialog';
 import SplitPaneSection from './chapter13/13.1.1.2/SplitPaneSection';
 import DialogContainer from './chapter13/13.1.2/DialogContainer';
 import SignUpDialog from './chapter13/13.1.3/SignUpDialog';
+import ProfileCard from './chapter13/ProfileCard';
+import DarkOrLight from './chapter14/DarkOrLight';
+import StylePage from './chapter15/StylePage';
+import Blocks from './chapter15/Blocks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -106,30 +110,30 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // const messages = ['React', 'Re: React', 'Re:Re: React'];
 // const messages = [];
 // root.render(
-  // <Greeting isLoggedIn={true} />
-  // <LoginControl />
-  // <Mailbox unreadMessages={messages} />
-  // <LoginControlRefactoring />
-  // <MainPage />
-  // <LandingPage />
+// <Greeting isLoggedIn={true} />
+// <LoginControl />
+// <Mailbox unreadMessages={messages} />
+// <LoginControlRefactoring />
+// <MainPage />
+// <LandingPage />
 // );
 
 // 10장 예제
 // const numbers = [1 ,2 ,3 ,4 ,5];
 // root.render(
-  // <NumberList numbers={numbers}/>
-  // <AttendanceBook />
+// <NumberList numbers={numbers}/>
+// <AttendanceBook />
 // );
 
 // 11장 예제
 // root.render(
-  // <NameForm />
-  // <EssayForm />
-  // <FlavorForm />
-  // <FileInput />
-  // <Reservation />
-  // <ReservationRefactoring />
-  // <SignUp />
+// <NameForm />
+// <EssayForm />
+// <FlavorForm />
+// <FileInput />
+// <Reservation />
+// <ReservationRefactoring />
+// <SignUp />
 // );
 
 // 12장 예제
@@ -138,12 +142,24 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // );
 
 // 13장 예제
+// root.render(
+// <FancyBorder/>
+// <WelcomeDialog />
+// <SplitPaneSection />
+// <DialogContainer />
+// <SignUpDialog />
+// <ProfileCard />
+// );
+
+// 14장 예제
+// root.render(
+//   <DarkOrLight />
+// );
+
+// 15장 예제
 root.render(
-  // <FancyBorder/>
-  // <WelcomeDialog />
-  // <SplitPaneSection />
-  // <DialogContainer />
-  <SignUpDialog />
+  // <StylePage />
+  <Blocks />
 );
 
 
