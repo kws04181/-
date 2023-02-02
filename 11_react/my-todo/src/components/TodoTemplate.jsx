@@ -31,7 +31,7 @@ function TodoTemplate(props) {
   return (
     <TodoTemplateWrapper>
       <div className="app-title">
-        일정관리
+        일정관리🎮
       </div>
       <div className="content">
         {children}
