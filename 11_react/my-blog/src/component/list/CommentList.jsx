@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import CommentListItem from './CommentListItem';
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,10 +16,19 @@ const Wrapper = styled.div`
 `;
 
 function CommentList(props) {
+  const { comments } = props;
+
   return (
-    <div>
-      
-    </div>
+    <Wrapper>
+      {comments.map((com) => {
+        return (
+          <CommentListItem 
+          key={com.id}
+          comment={com.content}
+          />
+        );
+      })}
+    </Wrapper>
   );
 }
 
