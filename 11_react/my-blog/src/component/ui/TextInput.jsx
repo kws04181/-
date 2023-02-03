@@ -6,8 +6,9 @@ const StyledTextarea = styled.textarea`
   height: ${props => props.height && props.height + 'px'};
   padding: 16px;
   line-height: 20px;
-`
+`;
 
+// 공통 텍스트 입력 컴포넌트
 function TextInput(props) {
   const { height, value, onChange } = props;
 
