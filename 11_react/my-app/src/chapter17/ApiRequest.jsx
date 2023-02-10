@@ -7,16 +7,28 @@ function ApiRequest(props) {
   const [data, setData] = useState(null);
 
   // 1. Promise/then
-  const handleRequst = (id) => {
-    // jsonplaceholder에서 제공하는 테스트용 api 호출
-    axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`)
-      .then((response) => {
-        console.log(response);
-        setData(response.data); // axios 라이브러리가 JSON -> object/array 변환 작업을 자동으로 해줌
-      })
-      .catch((error) => { // 요청 실패한 경우 에러 핸들링
-        console.error(error);
-      })
+  // const handleRequst = (id) => {
+  //   // jsonplaceholder에서 제공하는 테스트용 api 호출
+  //   axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`)
+  //     .then((response) => {
+  //       console.log(response);
+  //       setData(response.data); // axios 라이브러리가 JSON -> object/array 변환 작업을 자동으로 해줌
+  //     })
+  //     .catch((error) => { // 요청 실패한 경우 에러 핸들링
+  //       console.error(error);
+  //     })
+  // };
+
+  // 2. async/await
+  const handleRequst = async (id) => {
+    try {
+      // jsonplaceholder에서 제공하는 테스트용 api 호출
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`);
+      console.log(response);
+      setData(response.data); // axios 라이브러리가 JSON -> object/array 변환 작업을 자동으로 해줌
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
