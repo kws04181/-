@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 function ApiRequest(props) {
   // 서버에서 가져온 데이터를 담을 state
@@ -7,14 +8,29 @@ function ApiRequest(props) {
 
   // 1. Promise/then
   const handleRequst = (id) => {
-    
+    // jsonplaceholder에서 제공하는 테스트용 api 호출
+    axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`)
+      .then((response) => {
+        console.log(response);
+        setData(response.data); // axios 라이브러리가 JSON -> object/array 변환 작업을 자동으로 해줌
+      })
+      .catch((error) => { // 요청 실패한 경우 에러 핸들링
+        console.error(error);
+      })
   };
 
   return (
     <div>
       <div>
-        <button type='button'>불러오기</button>
+        <button type='button' onClick={() => handleRequst(486)}>불러오기</button>
       </div>
+      {data &&
+        <>
+          <textarea cols={70} rows={8} value={JSON.stringify(data, null, 2)} readOnly />
+          <p>{data.title}</p>
+          <img src={data.thumbnailUrl} alt="thumbnail" />
+        </>
+      }
     </div>
   );
 }
