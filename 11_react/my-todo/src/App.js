@@ -54,6 +54,11 @@ function App() {
     setTodos(dbTodos);
   }, []);
 
+  // 로컬 스토리지에 저장하기
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   // todos 배열에 새 객체를 생성하기 위한 handleInsert() 함수 정의
   // 새로운 객체를 생성할 때마다 id값에 1씩 더해 주어야 하는데 useRef()를 사용하여 변수 생성
   // id값은 렌더링되는 정보가 아니기 때문에 ref 사용
@@ -80,10 +85,7 @@ function App() {
     // 방법2 - 배열의 내장 함수 이용
     setTodos(todos.concat(todo)); // 새로운 배열 반환함
 
-    nextId.current += 1;
-
-    // 로컬 스토리지에 저장
-    localStorage.setItem('todos', JSON.stringify(todos.concat(todo)));
+    nextId.current += 1; // nextId에 1씩 더하기
   }, [todos]);
 
   // todos 배열에서 id로 항목을 지우기 위한 handleRemove()함수 정의
@@ -107,7 +109,6 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
 
     // 로컬 스토리지에 저장
-    localStorage.setItem('todos', JSON.stringify(todos.filter((todo) => todo.id !== id)));
   }, [todos]);
 
   // todos 배열의 특정 요소를 수정하기 위한 handleToggle() 함수 정의
