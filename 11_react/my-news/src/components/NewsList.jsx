@@ -38,7 +38,6 @@ function NewsList({ category }) {
         const query = category === 'all' ? '' : `&category=${category}`;
         const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=8b5db069352642ee85e1acd181a5e2d9`)
 
-        console.log(response);
         setArticles(response.data.articles);
       } catch (error) {
         console.error(error);

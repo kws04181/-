@@ -45,7 +45,36 @@ const CategoriesBlock = styled.div`
   }
 `;
 
-const Category = styled.div`
+// const Category = styled.div`
+//   font-size: 1.125rem;
+//   white-space: pre;
+//   text-decoration: none;
+//   color: inherit;
+//   padding-bottom: 0.25rem;
+//   cursor: pointer;
+
+//   &:hover {
+//     color: #495057;
+//   }
+
+//   & + & {
+//     margin-left: 1rem;
+//   }
+
+//   /* 현재 선택된 카테고리 값에 따라 다른 스타일 적용 */
+//   ${props => props.active &&
+//     css`
+//       font-weight: 600;
+//       border-bottom: 2px solid #22b8cf;
+//       color: #22b8cf;
+//       &:hover {
+//         color: #3bc9db;
+//       }
+//     `}
+// `;
+
+// NavLink
+const CategoryLink = styled(NavLink)`
   font-size: 1.125rem;
   white-space: pre;
   text-decoration: none;
@@ -61,31 +90,36 @@ const Category = styled.div`
     margin-left: 1rem;
   }
 
-  /* 현재 선택된 카테고리 값에 따라 다른 스타일 적용 */
-  ${props => props.active &&
-    css`
-      font-weight: 600;
-      border-bottom: 2px solid #22b8cf;
-      color: #22b8cf;
-      &:hover {
-        color: #3bc9db;
-      }
-    `}
+  /* active라는 클래스 값이 있으면 적용 */
+  &.active{
+    font-weight: 600;
+    border-bottom: 2px solid #22b8cf;
+    color: #22b8cf;
+    &:hover {
+      color: #3bc9db;
+    }
+  }
 `;
 
 function Categories({ category, onSelect }) {
   return (
     <CategoriesBlock>
       {categories.map((c) => (
-        <Categories
+        // <Categories
+        //   key={c.name}
+        //   active={c.name === category}
+        //   onClick={() => {
+        //     onSelect(c.name);
+        //   }}
+        // >
+        //   {c.text}
+        // </Categories>
+        <CategoryLink
           key={c.name}
-          active={c.name === category}
-          onClick={() => {
-            onSelect(c.name);
-          }}
+          to={c.name === 'all' ? '/' : `/${c.name}`}
         >
           {c.text}
-        </Categories>
+        </CategoryLink>
       ))}
     </CategoriesBlock>
   );
