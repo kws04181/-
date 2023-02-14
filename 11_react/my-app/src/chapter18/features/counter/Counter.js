@@ -3,6 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { increment, decrement, incrementByAmount, selectCount } from "./CounterSlice";
 import { useState } from 'react';
 
+export const counterSlice = createSlice({
+  name: 'counter', 
+  initialState,
+  reducers: {
+    increment: (state) => { 
+      state.value += 1; 
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload
+    },
+  },
+});
+
 // 5. 리액트 컴포넌트에서 Redux State와 Actions 사용하기
 function Counter() {
   // Redux Store에 있는 state를 가져오는 함수
@@ -16,7 +32,6 @@ function Counter() {
 
   const [incrementAmount, setIncrementAmount] = useState("2");
   const incrementValue = Number(incrementAmount) || 0;
-
 
   return (
     <div>

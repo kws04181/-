@@ -2,10 +2,12 @@ import { createGlobalStyle } from "styled-components";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
+import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 import 'bootstrap/dist/css/bootstrap.min.css'; // bootstap CSS 추가
 import Header from "./pages/Header";
 import Main from "./pages/Main";
+import ProductDetail from "./pages/ProductDetail";
+import { ToastContainer } from 'react-toastify';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -38,11 +40,24 @@ function App() {
         {/* Quiz: Header 컴포넌트 추출 및 Outlet 활용하여 라우팅 구성해보기 */}
         <Routes>
           <Route path="/" element={<Header />}>
+
             {/* index: index route(여기서는 defalult child route) */}
             <Route index element={<Main />} />
+            {/* /detail/1 로 접속하면 productEl에 1이 담김 */}
+            <Route path="/detail/:productEl" element={<ProductDetail />} />
+
           </Route>
         </Routes>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          pauseOnFocusLoss={false}
+          theme="dark"
+        />
+
       </BrowserRouter>
+
     </>
   );
 }
