@@ -5,6 +5,11 @@ const initialState = {
   selectedProduct: {},
 }
 
+// thunk를 이용한 비동기 작업 처리하기
+// 이점?
+// 1) API 요청에 대한 상태 관리가 용이하다.
+// 2)
+
 // 상품 정보를 담을 slice를 만듦
 export const productSlice = createSlice({
   name: 'product',
@@ -16,8 +21,10 @@ export const productSlice = createSlice({
     getAllProductById: (state, action) => {
       state.selectedProduct = action.payload
     },
+    // 더보기 버튼 클릭 시 전역 상태에 상품 목록 추가하는 리듀서
     getMoreProducts: (state, action) => {
-      state.productList.push();
+      // console.log(action.payload);
+      state.productList.push(...action.payload);
     }
   }
 });
