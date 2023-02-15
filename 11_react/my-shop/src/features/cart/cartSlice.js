@@ -39,7 +39,8 @@ export const cartSlice = createSlice({
     addBasket: (state, { payload: item }) => {
       // item = { id, title, price, count }를 받아온다.
       // find()를 사용하여 해당 상품이 있는지 찾고
-      
+      console.log(item);
+
     }
   }
 })
