@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Row, Alert, Form } from 'react-bootstrap';
+import { Button, Col, Container, Row, Alert, Form, Nav } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getAllProductById, selctSelectedProduct } from '../features/product/productSlice';
@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styled, { keyframes } from 'styled-components';
 import { toast } from 'react-toastify';
+import TabContents from '../components/TabContents';
+import { addBasket } from '../features/cart/cartSlice';
 // 스타일드 컴포넌트 이용한 애니메이션 속성 적용
 const highlight = keyframes`
   from {background-color:#cff4fc;} 
@@ -25,9 +27,9 @@ const StyledAlert = styled(Alert)`
 
 function ProductDetail(props) {
 
-  const [alert, setAlert] = useState(true);
-
-  const [orderCount, setOrderCount] = useState(1);
+  const [alert, setAlert] = useState(true); // Info창 상태
+  const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
+  const [showTabIndex, setShowTabIndex] = useState(0); // 탭 index 상태
 
 
   // useParams() 사용하여 productEl 가져오기
@@ -64,7 +66,7 @@ function ProductDetail(props) {
       return;
     }
     setOrderCount(Number(e.target.value));
-  }
+  };
 
   // product가 없을 경우
   if (!product) {
@@ -97,8 +99,101 @@ function ProductDetail(props) {
           </Col>
 
           <Button variant='primary'>Order Now</Button>
+          <Button
+            variant='warning'
+            onClick={() => {
+              dispatch(addBasket({
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                count: orderCount
+              }));
+            }}
+          >Shopping Basket</Button>
         </Col>
       </Row>
+
+      {/* Tap Ui */}
+      {/* defaultActiveKey: 기본으로 active할 탭, active 클래스가 들어가있다. */}
+      <Nav variant="tabs" defaultActiveKey="link-1">
+        <Nav.Item>
+          <Nav.Link eventKey="link-1" onClick={() => { setShowTabIndex(0); }}>
+            Detail Info
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2" onClick={() => { setShowTabIndex(1); }}>
+            Review
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-3" onClick={() => { setShowTabIndex(2); }}>
+            Q&amp;A
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-4" onClick={() => { setShowTabIndex(3); }}>
+            Return/Exchange Info
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+
+      {/* 탭의 내용을 생성 후 조건부 렌더링하면 됨 */}
+      {/* 방법1: 삼항 연산자 */}
+      {/* {showTabIndex === 0
+        ? <div>tab contents1</div>
+        : showTabIndex === 1
+          ? <div>tab contents2</div>
+          : showTabIndex === 2
+            ? <div>tab contents3</div>
+            : showTabIndex === 3
+              ? <div>tab content4</div>
+              : null
+      }; */}
+
+      {/* 방법2: 컴포넌트로 추출 */}
+      {/* <TabContents showTabIndex={showTabIndex} /> */}
+
+      {/* 방법3: 배열이나 객체 형태로 만들어서 조건부 렌더링 */}
+      {/* 배열 형태 */}
+      {
+        [
+          <div>
+            In JavaScript, the Promise is the ideal and the best way to handle asynchronous operations. They can run multiple asynchronous operations efficiently and accurately.
+          </div>,
+          <div>
+            The JavaScript Promise provides handles errors better than other conventional techniques, callbacks, and events. The Promise object eventually conveys either the completion or failure of an asynchronous process and its consequent value.
+          </div>,
+          <div>
+            In other words, users can also define the JS Promise as the soundest choice for handling multiple callbacks simultaneously. It avoids the undesired callback hell causing an unmanageable code.
+          </div>,
+          <div>
+            Promises also provide a more reasonable option for programmers to read their code more virtually and efficiently, especially; if users use the particular code for executing multiple asynchronous operations.
+          </div>,
+        ][showTabIndex]
+      }
+      {/* 객체 형태 */}
+      {/* {
+        {
+          'detail':
+            <div>
+              In JavaScript, the Promise is the ideal and the best way to handle asynchronous operations. They can run multiple asynchronous operations efficiently and accurately.
+            </div>,
+          'review':
+            <div>
+              In JavaScript, the Promise is the ideal and the best way to handle asynchronous operations. They can run multiple asynchronous operations efficiently and accurately.
+            </div>,
+          'qa':
+            <div>
+              In JavaScript, the Promise is the ideal and the best way to handle asynchronous operations. They can run multiple asynchronous operations efficiently and accurately.
+            </div>,
+          'exchange':
+            <div>
+              In JavaScript, the Promise is the ideal and the best way to handle asynchronous operations. They can run multiple asynchronous operations efficiently and accurately.
+            </div>,
+        }[{ showTab }]
+      } */}
+
     </Container >
 
   );

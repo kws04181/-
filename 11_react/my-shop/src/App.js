@@ -8,6 +8,7 @@ import Header from "./pages/Header";
 import Main from "./pages/Main";
 import ProductDetail from "./pages/ProductDetail";
 import { ToastContainer } from 'react-toastify';
+import Cart from "./pages/Cart";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -45,6 +46,8 @@ function App() {
             <Route index element={<Main />} />
             {/* /detail/1 로 접속하면 productEl에 1이 담김 */}
             <Route path="/detail/:productEl" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<div><b>Page does not Exist</b></div>} />
 
           </Route>
         </Routes>

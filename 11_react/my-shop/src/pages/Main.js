@@ -2,7 +2,13 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import data from '../data.json';
-import { getAllProducts, getAllProductById, getMoreProducts } from '../features/product/productSlice'
+import {
+  getAllProducts,
+  getMoreProducts,
+  getMoreProductsAsync,
+  selectedProductList,
+  selctStatus
+} from '../features/product/productSlice'
 import ProductListItem from '../components/ProductListItem';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import axios from "axios";
@@ -21,8 +27,14 @@ const MainBackGround = styled.div`
 `;
 
 function Main(props) {
-  const ProductList = useSelector((state) => state.product.productList)
   const dispatch = useDispatch();
+  // const ProductList = useSelector((state) => state.product.productList)
+  const ProductList = useSelector(selectedProductList);
+
+  // React-spinners
+  // API 요청 상태 가져오기(로딩 상태)
+  const status = useSelector(selctStatus);
+
 
   // 처음 마운트 됐을때 서버에 상품 목록 데이터를 요청하고
   // 그 결과를 리덕스 스토어에 저장
@@ -39,6 +51,11 @@ function Main(props) {
     // 스토어에 dispatch로 요청 보내기
     dispatch(getMoreProducts(result));
   };
+
+  if (status === 'loading') {
+    return <>로딩중입니다.</>
+  }
+
 
   return (
     <>
@@ -88,9 +105,9 @@ function Main(props) {
         <Button
           variant='secondary'
           className='mb-4'
-          onClick={undefined}
+          onClick={() => dispatch(getMoreProductsAsync())}
         >
-          Add
+          Add {status}
         </Button>
       </section>
     </>

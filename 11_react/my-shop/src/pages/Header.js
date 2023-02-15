@@ -15,7 +15,7 @@ function Header(props) {
             <Navbar.Brand
               href="#home"
               onClick={() => { navigate('/'); }}
-            >Seong Won</Navbar.Brand>
+            >Seong</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link onClick={() => { navigate('/'); }}>Home</Nav.Link>
               <Nav.Link onClick={() => { navigate('/cart'); }}>Shopping Basket</Nav.Link>
