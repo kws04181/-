@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Col, Container, Row, Alert, Form, Nav } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Button, Col, Container, Row, Alert, Form, Nav, Modal } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getAllProductById, selctSelectedProduct } from '../features/product/productSlice';
 
@@ -13,6 +13,8 @@ import styled, { keyframes } from 'styled-components';
 import { toast } from 'react-toastify';
 import TabContents from '../components/TabContents';
 import { addBasket } from '../features/cart/cartSlice';
+import Cart from './Cart';
+
 // 스타일드 컴포넌트 이용한 애니메이션 속성 적용
 const highlight = keyframes`
   from {background-color:#cff4fc;} 
@@ -30,6 +32,10 @@ function ProductDetail(props) {
   const [alert, setAlert] = useState(true); // Info창 상태
   const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
   const [showTabIndex, setShowTabIndex] = useState(0); // 탭 index 상태
+  const [show, setShow] = useState(false); // 모달 상태
+  const handleClose = () => setShow(false);
+  const handleOpen = () => setShow(true);
+  const navigate = useNavigate();
 
 
   // useParams() 사용하여 productEl 가져오기
@@ -49,6 +55,17 @@ function ProductDetail(props) {
     });
 
     dispatch(getAllProductById(foundProduct));
+
+    // 상세 페이지에 들어오면 해당 상품의 id를 localStorage에 추가
+    let latestViewed = JSON.parse(localStorage.getItem('latestViewed')) || [];
+    // Set 자료형을 이용하여 중복 제거
+    latestViewed.push(productEl);
+    latestViewed = new Set(latestViewed);
+    // latestViewed = Array.from(latestViewed);
+    latestViewed = [...latestViewed];
+    localStorage.setItem('latestViewed', JSON.stringify(latestViewed));
+
+
 
     // 3초 뒤에 alert창 사라지게 만들기
     const timer = setTimeout(() => {
@@ -108,6 +125,8 @@ function ProductDetail(props) {
                 price: product.price,
                 count: orderCount
               }));
+
+              handleOpen(); // 장바구니 모달 오픈
             }}
           >Shopping Basket</Button>
         </Col>
@@ -194,6 +213,24 @@ function ProductDetail(props) {
         }[{ showTab }]
       } */}
 
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Shop News</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>장바구니에 상품을 담았습니다.<br />
+          장바구니로 이동하시겠습니까?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            취소
+          </Button>
+          <Button variant="primary" onClick={() => {
+            navigate('/cart');
+          }}>
+            확인
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container >
 
   );

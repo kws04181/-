@@ -7,14 +7,14 @@ const initialState = {
       id: "1",
       title: "Arcsaber 11 Pro",
       price: 299000,
-      count: 2
-    },
-    {
-      id: "3",
-      title: "Aerus 2",
-      price: 199000,
       count: 1
     },
+    // {
+    // id: "3",
+    // title: "Aerus 2",
+    // price: 199000,
+    // count: 1
+    // },
   ],
 }
 
@@ -41,13 +41,24 @@ export const cartSlice = createSlice({
       // find()를 사용하여 해당 상품이 있는지 찾고
       console.log(item);
 
+      const targetId = state.cartList.find((cartitem) => cartitem.id === item.id);
+      if (targetId) {
+        targetId.count += item.count
+      } else {
+        state.cartList.push(item)
+      }
+    },
+    // 장바구니에서 삭제
+    removeItemFromCart: (state, { payload: con }) => {
+      const targetIndex = state.cartList.findIndex((cart) => cart.con === con);
+      state.cartList.splice(targetIndex, 1);
     }
   }
 })
 
 export const selectCartList = state => state.cart.cartList;
 
-export const { incrementCount, decrementCount, addBasket } = cartSlice.actions;
+export const { incrementCount, decrementCount, addBasket, removeItemFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
 

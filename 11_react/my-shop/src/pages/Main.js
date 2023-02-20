@@ -13,6 +13,7 @@ import ProductListItem from '../components/ProductListItem';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import axios from "axios";
 import { getProducts } from '../api/productAPI';
+import LatestView from '../components/LatestView';
 
 
 // 리액트(JS)에서 이미지 파일 import 하는법
@@ -110,6 +111,8 @@ function Main(props) {
           Add {status}
         </Button>
       </section>
+
+      <LatestView />
     </>
   );
 }
